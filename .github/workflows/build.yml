@@ -31,11 +31,8 @@ jobs:
 
       - name: Build APK with Flet
         run: |
-          # Perbaikan keamanan direktori Git
-          git config --global --add safe.directory '*' || true
-          
-          # Build APK
-          flet build apk --no-interactive --org com.dennispardjer.kebiasaan
+          git config --global --add safe.directory '*'
+          flet build apk --org com.dennispardjer.kebiasaan
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
