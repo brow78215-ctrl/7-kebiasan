@@ -32,7 +32,8 @@ jobs:
       - name: Build APK with Flet
         run: |
           git config --global --add safe.directory '*'
-          flet build apk --org com.dennispardjer.kebiasaan
+          # Menggunakan echo y agar konfirmasi otomatis terjawab di environment CI
+          echo "y" | flet build apk --org com.dennispardjer.kebiasaan
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
