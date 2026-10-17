@@ -29,10 +29,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Accept Android Licenses and Build APK
+      - name: Build APK with Flet
         run: |
-          yes | flutter doctor --android-licenses || true
-          yes | flet build apk
+          # Perbaikan keamanan direktori Git
+          git config --global --add safe.directory '*' || true
+          
+          # Build APK
+          flet build apk --no-interactive --org com.dennispardjer.kebiasaan
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
